@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "347E9834-D6A8-4696-90E0-0BFDA9698A65",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Big Calc.xcodeproj",
+      "identifier" : "84FB22F52A8912BD001787D6",
+      "name" : "Big Calc"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Big Calc.xcodeproj",
+        "identifier" : "84FB23052A8912BD001787D6",
+        "name" : "Big CalcTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Big Calc.xcodeproj",
+        "identifier" : "84FB230F2A8912BD001787D6",
+        "name" : "Big CalcUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
