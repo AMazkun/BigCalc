@@ -57,7 +57,6 @@ extension StateMachine {
             stateStack.state = result.isNormal ?  .result : .error
             registers.result.line = String(result).ajastInput
             registers.result.op = .calc
-            appendHistory()
 
         } else {
             stateStack.state = .error
@@ -92,16 +91,12 @@ extension StateMachine {
                 if result.isFinite {
                     if go {
                         stateStack.state = .secondDigitEnter(.clearBefore)
-                        registers.result.line = String(result).ajastInput
-                        registers.result.op = .calc
-                        appendHistory()
                         registers.argument1.line = String(result).ajastInput
                     } else  {
                         stateStack.state = .result
-                        registers.result.line = String(result).ajastInput
-                        registers.result.op = .calc
-                        appendHistory()
                     }
+                    registers.result.line = String(result).ajastInput
+                    registers.result.op = .calc
                 } else {
                     stateStack.state = .error
                     registers.result.line = String(result.description)
@@ -135,7 +130,6 @@ extension StateMachine {
                 registers.argument2.line = String(operand2).ajastInput
                 registers.result.line = String(result).ajastInput
                 
-                appendHistory()
                 registers.result.op = .calc
                 registers.argument2.op = .percent
 

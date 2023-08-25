@@ -24,23 +24,12 @@ extension String {
 }
 
 class StateMachine {
-    internal init(stateStack: StateStack = StateStack(initState: .firstDigitEnter(.clearBefore)), registers: Registers = Registers(), keyArray: [CalcButton] = mainKeyArray, memory: [String] = Array(repeating: "", count: 10), history: [Registers] = [], historyRecMax: Int = historyStep, showConformation: Bool = false) {
+    internal init(stateStack: StateStack = StateStack(initState: .firstDigitEnter(.clearBefore)), registers: Registers = Registers(), keyArray: [CalcButton] = mainKeyArray, memory: [String] = Array(repeating: "", count: 10), showConformation: Bool = false) {
         self.stateStack = stateStack
         self.registers = registers
         self.keyArray = keyArray
         self.memory = memory
-        self.historyRecMax = historyRecMax
         self.showConformation = showConformation
-        self.history = history
-
-        do {
-            if let data = UserDefaults.standard.data(forKey: "BigCalcHistory") {
-                let saved = try JSONDecoder().decode( [Registers].self, from: data)
-                self.history = saved
-            }
-        } catch {
-            self.history = history
-        }
     }
     
     
@@ -48,30 +37,8 @@ class StateMachine {
     var registers : Registers
     var keyArray : [CalcButton]
     var memory = Array(repeating: "", count: 10)
-    var history : [Registers]
-    var historyRecMax : Int
     var showConformation : Bool
 
-    func appendHistory() {
-        if stateStack.state != .error {
-            // Exclude duplicates
-            if history.isEmpty || history[0] != registers {
-                // revers history order, new - first
-                history.insert(registers, at: 0)
-            }
-            // trimming history to maximum
-            let recToDrop = history.count - historyRecMax
-            if recToDrop > 0 {
-                history = history.dropLast(recToDrop)
-            }
-        }
-    }
-    
-    func saveHistory() {
-        let data = try! JSONEncoder().encode(history)
-        UserDefaults.standard.set(data, forKey: "BigCalcHistory")
-    }
-    
     func clear () {
         registers  = Registers()
         stateStack = StateStack(initState: .firstDigitEnter(.clearBefore))

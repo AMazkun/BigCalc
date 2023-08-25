@@ -22,7 +22,7 @@ struct HistoryListView: View {
             if calculator.historyNotEmpty {
                 
                 var headers : [String] {
-                    Array(Set(calculator.stateMachine.history.map{$0.date}))
+                    Array(Set(calculator.history.map{$0.date}))
                 }
                 
                 List {
@@ -30,7 +30,7 @@ struct HistoryListView: View {
                         Section(header: Text(group)) {
                             
                             var dateGroup : [Registers] {
-                                calculator.stateMachine.history.filter {$0.date == group}
+                                calculator.history.filter {$0.date == group}
                             }
                             
                             ForEach(dateGroup, id:\.self)

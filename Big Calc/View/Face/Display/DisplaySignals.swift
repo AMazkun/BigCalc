@@ -72,7 +72,7 @@ struct DisplaySignals: View {
                         .scaledToFit()
                         .frame(width: elSize, height: elSize)
                         .foregroundColor(.red)
-                        .opacity(calculator.errorState ? 1 : 0)
+                        .opacity(calculator.isError ? 1 : 0)
                 }
             )
             Spacer()

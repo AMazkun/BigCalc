@@ -16,17 +16,29 @@ struct MemoryIdentifiable: Identifiable {
 }
 
 final class CalculatorLogic : ObservableObject  {
-    internal init(stateMachine: StateMachine = StateMachine(), setupValues: SetupValues = SetupValues(), showConformation: Bool = false) {
+    internal init(stateMachine: StateMachine = StateMachine(), setupValues: SetupValues = SetupValues(), history: [Registers] = [], showConformation: Bool = false) {
         self.setupValues = setupValues
-        stateMachine.historyRecMax = setupValues.history
         self.stateMachine = stateMachine
         self.showConformation = showConformation
+        self.history = history
+
+        // read saved history from UserDefaults
+        do {
+            if let data = UserDefaults.standard.data(forKey: "BigCalcHistory") {
+                let saved = try JSONDecoder().decode( [Registers].self, from: data)
+                self.history = saved
+            }
+        } catch {
+            self.history = history
+        }
+
     }
 
     @Published var setupValues  : SetupValues
     @Published var stateMachine : StateMachine
     @Published var showConformation : Bool
-    
+    @Published var history : [Registers]
+
     var getVariables : [MemoryIdentifiable] {
         var result : [MemoryIdentifiable] = []
         for i in 0...stateMachine.memory.count-1 {
@@ -35,10 +47,26 @@ final class CalculatorLogic : ObservableObject  {
         return result
     }
     
+    var isResult : Bool  {
+        return (stateMachine.stateStack.state == .result ||
+                // In arithmetic flow .result state omitted, and we have .secondDigitEnter instead
+                // so have to add thi way
+                // Have to think
+                stateMachine.registers.argument2.op == .calc
+        )
+    }
+    
+    var isError : Bool  {
+        return (stateMachine.stateStack.state == .error)
+    }
+    
+
     func run(_ keyIndx : Int) {
         // RUN
         stateMachine.run(keyIndx)
         
+        // Store all results
+        if isResult { appendHistory() }
         showConformation = stateMachine.showConformation
     }
     
@@ -117,18 +145,33 @@ final class CalculatorLogic : ObservableObject  {
         }
     }
 
-    var errorState : Bool  {
-        return (stateMachine.stateStack.state == .error)
-    }
-    
     var historyNotEmpty : Bool {
-        return stateMachine.history.count > 0
+        return history.count > 0
     }
 
     func removeHistory() {
-        stateMachine.history.removeAll()
-        stateMachine.saveHistory()
+        history.removeAll()
+        saveHistory()
     }
+    
+    func appendHistory() {
+        // Exclude duplicates
+        if history.isEmpty || history[0] != stateMachine.registers {
+            // revers history order, new - first
+            history.insert(stateMachine.registers, at: 0)
+        }
+        // trimming history to maximum
+        let recToDrop = history.count - setupValues.history
+        if recToDrop > 0 {
+            history = history.dropLast(recToDrop)
+        }
+    }
+    
+    func saveHistory() {
+        let data = try! JSONEncoder().encode(history)
+        UserDefaults.standard.set(data, forKey: "BigCalcHistory")
+    }
+    
     
     // clrear ALL memotry cells
     func clearMemory() {

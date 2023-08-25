@@ -22,7 +22,7 @@ struct ContentView: View {
         coordinator.router.view()
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .background {
-                calculator.stateMachine.saveHistory()
+                calculator.saveHistory()
             }
         }
         .onReceive(orientationChanged)
