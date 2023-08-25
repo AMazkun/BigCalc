@@ -17,14 +17,15 @@ struct MemoryIdentifiable: Identifiable {
 
 final class CalculatorLogic : ObservableObject  {
     internal init(stateMachine: StateMachine = StateMachine(), setupValues: SetupValues = SetupValues(), showConformation: Bool = false) {
-        self.stateMachine = stateMachine
         self.setupValues = setupValues
+        stateMachine.historyRecMax = setupValues.history
+        self.stateMachine = stateMachine
         self.showConformation = showConformation
     }
 
-    @Published var stateMachine : StateMachine = StateMachine()
-    @Published var setupValues = SetupValues()
-    @Published var showConformation : Bool = false
+    @Published var setupValues  : SetupValues
+    @Published var stateMachine : StateMachine
+    @Published var showConformation : Bool
     
     var getVariables : [MemoryIdentifiable] {
         var result : [MemoryIdentifiable] = []
@@ -34,12 +35,10 @@ final class CalculatorLogic : ObservableObject  {
         return result
     }
     
-    func run(_ indx : Int) {
-        let stateBeforeResult =  stateMachine.stateStack.state.isResult
-        stateMachine.run(indx)
-        if stateMachine.stateStack.state.isFirstDigitEnter && stateBeforeResult {
-            stateMachine.registers.argument1.line = displayFormatter(stateMachine.registers.argument1.line)
-        }
+    func run(_ keyIndx : Int) {
+        // RUN
+        stateMachine.run(keyIndx)
+        
         showConformation = stateMachine.showConformation
     }
     
@@ -128,6 +127,7 @@ final class CalculatorLogic : ObservableObject  {
 
     func removeHistory() {
         stateMachine.history.removeAll()
+        stateMachine.saveHistory()
     }
     
     // clrear ALL memotry cells

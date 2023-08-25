@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Register: Hashable {
+struct Register: Hashable, Codable {
     internal init(op: Op = .nun, line: String = "") {
         self.op = op
         self.line = line
@@ -23,11 +23,14 @@ struct Register: Hashable {
     }
 }
 
-struct Registers: Hashable {
+let dateStampFormat = Date.FormatStyle().day().month().year().hour(.defaultDigits(amPM: .abbreviated))
+
+struct Registers: Hashable, Codable {
     internal init(argument1: Register = Register(line: "0"), argument2: Register = Register(line: ""), result: Register = Register(line: "")) {
         self.argument1 = argument1
         self.argument2 = argument2
         self.result = result
+        self.date = Date.now.formatted(dateStampFormat) + ":00"
     }
     
     static func == (lhs: Registers, rhs: Registers) -> Bool {
@@ -36,6 +39,8 @@ struct Registers: Hashable {
         && (lhs.result == rhs.result)
     }
     
+//    var id = UUID() // for in list iddetificaltion
+    var date = Date.now.formatted(dateStampFormat) + ":00"
     var argument1:  Register  = Register(line: "0")
     var argument2:  Register  = Register(line: "")
     var result:     Register  = Register(line: "")

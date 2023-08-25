@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-enum Op: String, Equatable {
+enum Op: String, Equatable, Codable {
     case plus = "+"
     case minus = "−"
     case multiply = "×"

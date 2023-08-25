@@ -8,6 +8,8 @@
 import Foundation
 
 let maxDigits = 16
+let maxHistoryRecords = 200
+let historyStep = 20
 
 enum Appearence: String, CaseIterable, Identifiable, Codable {
     case Automatic, Portrait, Landscape
@@ -20,7 +22,7 @@ enum ShowExpression: String, CaseIterable, Identifiable, Codable {
 }
 
 struct SetupValues : Codable {
-    internal init(appearence: Appearence = .Automatic, showExpression: ShowExpression = .Automatic, dp: Int = 4, dpEE: Int = 8, allowEE: Bool = true, forceDP: Bool = false) {
+    internal init(appearence: Appearence = .Automatic, showExpression: ShowExpression = .Automatic, dp: Int = 4, dpEE: Int = 8, allowEE: Bool = true, forceDP: Bool = false, history: Int = historyStep * 2) {
         do {
             if let data = UserDefaults.standard.data(forKey: "BigCalcSetup") {
                 let saved = try JSONDecoder().decode(SetupValues.self, from: data)
@@ -30,6 +32,7 @@ struct SetupValues : Codable {
                 self.dpEE = saved.dpEE
                 self.allowEE = saved.allowEE
                 self.forceDP = saved.forceDP
+                self.history = saved.history
             }
         } catch {
             self.appearence = appearence
@@ -38,6 +41,7 @@ struct SetupValues : Codable {
             self.dpEE = dpEE
             self.allowEE = allowEE
             self.forceDP = forceDP
+            self.history = history
         }
     }
     
@@ -46,6 +50,7 @@ struct SetupValues : Codable {
 
     var dp : Int = 4            // digital plases
     var dpEE: Int = 8           // digital paces for Engeneering format
+    var history: Int = historyStep * 2       // Maximum history lenth
     var allowEE : Bool = true   // allow EE output
     var forceDP : Bool = false  // fix digital plases
     

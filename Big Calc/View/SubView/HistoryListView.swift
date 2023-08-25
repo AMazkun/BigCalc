@@ -20,20 +20,36 @@ struct HistoryListView: View {
                 .padding()
             
             if calculator.historyNotEmpty {
+                
+                var headers : [String] {
+                    Array(Set(calculator.stateMachine.history.map{$0.date}))
+                }
+                
                 List {
-                    ForEach(calculator.stateMachine.history, id:\.self) { item in
-                        VStack{
-                            Text(calculator.showCalcExpression(item))
-                                .frame(maxWidth: .infinity, alignment: .trailing)
+                    ForEach(headers,  id:\.self) { group in
+                        Section(header: Text(group)) {
                             
-                            Text( "= " + calculator.displayFormatter(item.result.line))
-                                .font(.title)
-                                .foregroundColor(.yellow)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                        .onTapGesture {
-                            calculator.onPaste(item.result.line)
-                            coordinator.event(.HistoryDismiss)
+                            var dateGroup : [Registers] {
+                                calculator.stateMachine.history.filter {$0.date == group}
+                            }
+                            
+                            ForEach(dateGroup, id:\.self)
+                            { item in
+                                // display the view of matchItem
+                                VStack{
+                                    Text(calculator.showCalcExpression(item))
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+
+                                    Text( "= " + calculator.displayFormatter(item.result.line))
+                                        .font(.title)
+                                        .foregroundColor(.yellow)
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
+                                .onTapGesture {
+                                    calculator.onPaste(item.result.line)
+                                    coordinator.event(.HistoryDismiss)
+                                }
+                            }
                         }
                     }
                 }

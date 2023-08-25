@@ -136,7 +136,9 @@ extension StateMachine {
                 registers.result.line = String(result).ajastInput
                 
                 appendHistory()
-                registers.result.op = .percent
+                registers.result.op = .calc
+                registers.argument2.op = .percent
+
             } else {
                 stateStack.state = .error
             }

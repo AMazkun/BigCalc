@@ -30,6 +30,9 @@ struct SetupView: View {
                     Text("Never").tag(ShowExpression.Never)
                     Text("Always").tag(ShowExpression.Always)
                 }
+
+                Stepper(value: $calculator.setupValues.history, in: 20...maxHistoryRecords, step: historyStep) {
+                    Text("History records: " + String(calculator.setupValues.history))}
                 
                 Section( header: Text("Fixed format")) {
                     Section { // fixed digital places

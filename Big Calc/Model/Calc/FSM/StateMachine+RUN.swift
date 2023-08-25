@@ -213,7 +213,6 @@ extension StateMachine {
                 calcResult(go: false)
                 // repeat last op
             case .percent:
-                registers.argument2.op = .percent
                 calcPercent()
                 // repeat last one argemetf func on result
             case .under, .arctg, .cos, .rad, .deg, .sin, .tg:

@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var calculator : CalculatorLogic
+    @Environment(\.scenePhase) var scenePhase
+
 
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()
@@ -18,6 +20,11 @@ struct ContentView: View {
 
     var body: some View {
         coordinator.router.view()
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .background {
+                calculator.stateMachine.saveHistory()
+            }
+        }
         .onReceive(orientationChanged)
         { _ in
             let _orientation = UIDevice.current.orientation
