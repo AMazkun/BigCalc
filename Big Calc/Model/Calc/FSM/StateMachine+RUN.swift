@@ -331,6 +331,7 @@ extension StateMachine {
         case .memoryClear:
             if let n = Int(keyArray[indx].title) {
                 let cell = abs(n)
+                memory[cell] = ""
                 keyArray[indx] = .digit(cell)
             }
             _=stateStack.popToNonMemory()
