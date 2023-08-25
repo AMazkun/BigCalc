@@ -31,12 +31,14 @@ struct SetupView: View {
                     Text("Always").tag(ShowExpression.Always)
                 }
                 
-                Section { // fixed digital places
-                    Stepper(value: $calculator.setupValues.dp, in: 0...maxDigits) {
-                        Text("Fixed digital places: " + String(calculator.setupValues.dp))}
-                    
-                    Toggle("Force fixed dp", isOn: $calculator.setupValues.forceDP)
-                        .onChange(of: self.calculator.setupValues.forceDP ){ newValue in calculator.setupValues.allowEE = !newValue && calculator.setupValues.allowEE }
+                Section( header: Text("Fixed format")) {
+                    Section { // fixed digital places
+                        Stepper(value: $calculator.setupValues.dp, in: 0...maxDigits) {
+                            Text("Fixed digital places: " + String(calculator.setupValues.dp))}
+                        
+                        Toggle("Force fixed dp", isOn: $calculator.setupValues.forceDP)
+                            .onChange(of: self.calculator.setupValues.forceDP ){ newValue in calculator.setupValues.allowEE = !newValue && calculator.setupValues.allowEE }
+                    }
                 }
                 
                 // engeneering format
