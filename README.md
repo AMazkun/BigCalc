@@ -13,15 +13,16 @@ I'm not an exception
  Features:
  --------
 - Portrait (Simple) / Landscape (Math) mode / Autorotate
-- Togle first line: argument or expression (Portraite / Landscape)
+- Togle first line: argument or expression (Portraite / Landscape / Autorotate)
 - Very Big Buttons
 - 9 cells memory storage (access button 'M' then digit '1' - '9',  'M' 'M' - shows all list) with indication used cell
 - All universal Math functions as root(value, base), log(value, base), pwr(value, base)
 - Constants Pi and e
-- History
 - Memory operations indicator
 - Copy/paste result and arguments
-- Setup saving in UserDefaults
+- View tuning, setup saving in UserDefaults
+- History of calculations
+- History: sorting by hours and date and saving to UserDefaults (beauty conquers all)
 - Extended result formatting:
   - engeneering format
   - fixed digital plases for fraction
