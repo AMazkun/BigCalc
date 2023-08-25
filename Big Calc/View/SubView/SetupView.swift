@@ -57,7 +57,10 @@ struct SetupView: View {
             // Botton menu
             HStack {
                 Spacer()
-                Button("dismiss") { coordinator.event(.SetupDismiss) }
+                Button("dismiss") {
+                    calculator.setupValues.save()
+                    coordinator.event(.SetupDismiss)
+                }
                     .buttonStyle(.borderedProminent)
                 Spacer()
             }
