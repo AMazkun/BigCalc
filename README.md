@@ -21,6 +21,7 @@ I'm not an exception
 - History
 - Memory operations indicator
 - Copy/paste result and arguments
+- Setup saving in UserDefaults
 - Extended result formatting:
   - engeneering format
   - fixed digital plases for fraction
