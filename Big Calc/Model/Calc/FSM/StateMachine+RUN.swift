@@ -66,9 +66,14 @@ extension StateMachine {
                     registers.argument2.line = String(registers.argument2.line.dropLast())
                     stateStack.state = .secondDigitEnter(.continueInput)
                 } else {
-                    registers.argument2 = Register(line: "")
-                    stateStack.state = .firstDigitEnter(.continueInput)
-                    registers.argument1.op = .nun
+                    if input == .continueInput {
+                        registers.argument2 = Register(line: "")
+                        stateStack.state = .secondDigitEnter(.clearBefore)
+                    } else {
+                        registers.argument2 = Register(line: "")
+                        stateStack.state = .firstDigitEnter(.continueInput)
+                        registers.argument1.op = .nun
+                    }
                 }
             case .flip:
                 if input == .clearBefore {
