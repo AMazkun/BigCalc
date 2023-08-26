@@ -1,6 +1,6 @@
 //
-//  Big_CalcUITestsLaunchTests.swift
-//  Big CalcUITests
+//  Max_CalcUITestsLaunchTests.swift
+//  Max CalcUITests
 //
 //  Created by Anatoly Mazkun on 13.08.2023.
 //  anatoly.mazkun@gmail.com
@@ -8,7 +8,7 @@
 
 import XCTest
 
-final class Big_CalcUITestsLaunchTests: XCTestCase {
+final class Max_CalcUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

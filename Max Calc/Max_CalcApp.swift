@@ -1,5 +1,5 @@
 //
-//  Big_CalcApp.swift
+//  Max_CalcApp.swift
 //  Big Calc
 //
 //  Created by Anatoly Mazkun on 13.08.2023.
@@ -10,7 +10,7 @@ import SwiftUI
 
 
 @main
-struct Big_CalcApp: App {
+struct Max_CalcApp: App {
     @StateObject var coordinator = Coordinator.shared
     @StateObject var calculator = CalculatorLogic()
     

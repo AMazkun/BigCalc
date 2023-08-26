@@ -1,6 +1,6 @@
 //
-//  Big_CalcUITests.swift
-//  Big CalcUITests
+//  Max_CalcUITests.swift
+//  Max CalcUITests
 //
 //  Created by Anatoly Mazkun on 13.08.2023.
 //  anatoly.mazkun@gmail.com
@@ -8,7 +8,7 @@
 
 import XCTest
 
-final class Big_CalcUITests: XCTestCase {
+final class Max_CalcUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,15 +1,15 @@
 //
-//  Big_CalcTests.swift
-//  Big CalcTests
+//  Max_CalcTests.swift
+//  Max CalcTests
 //
 //  Created by Anatoly Mazkun on 13.08.2023.
 //  anatoly.mazkun@gmail.com
 //
 
 import XCTest
-@testable import Big_Calc
+@testable import Max_Calc
 
-final class Big_CalcTests: XCTestCase {
+final class Max_CalcTests: XCTestCase {
     
     private var calculator : CalculatorLogic!
     

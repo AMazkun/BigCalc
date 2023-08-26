@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1430"
-   version = "2.2">
+   version = "2.1">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "NO"
+            buildForTesting = "YES"
             buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
-            <AutocreatedTestPlanReference>
-            </AutocreatedTestPlanReference>
+            <TestPlanReference
+               reference = "container:Max Calc.xctestplan">
+            </TestPlanReference>
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -24,9 +25,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "84FB22F52A8912BD001787D6"
-               BuildableName = "Big Calc.app"
-               BlueprintName = "Big Calc"
-               ReferencedContainer = "container:Big Calc.xcodeproj">
+               BuildableName = "Max Calc.app"
+               BlueprintName = "Max Calc"
+               ReferencedContainer = "container:Max Calc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -38,7 +39,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Big Calc.xctestplan"
+            reference = "container:Max Calc.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -49,9 +50,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "84FB23052A8912BD001787D6"
-               BuildableName = "Big CalcTests.xctest"
-               BlueprintName = "Big CalcTests"
-               ReferencedContainer = "container:Big Calc.xcodeproj">
+               BuildableName = "Max CalcTests.xctest"
+               BlueprintName = "Max CalcTests"
+               ReferencedContainer = "container:Max Calc.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -60,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "84FB230F2A8912BD001787D6"
-               BuildableName = "Big CalcUITests.xctest"
-               BlueprintName = "Big CalcUITests"
-               ReferencedContainer = "container:Big Calc.xcodeproj">
+               BuildableName = "Max CalcUITests.xctest"
+               BlueprintName = "Max CalcUITests"
+               ReferencedContainer = "container:Max Calc.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -82,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84FB22F52A8912BD001787D6"
-            BuildableName = "Big Calc.app"
-            BlueprintName = "Big Calc"
-            ReferencedContainer = "container:Big Calc.xcodeproj">
+            BuildableName = "Max Calc.app"
+            BlueprintName = "Max Calc"
+            ReferencedContainer = "container:Max Calc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -99,9 +100,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84FB22F52A8912BD001787D6"
-            BuildableName = "Big Calc.app"
-            BlueprintName = "Big Calc"
-            ReferencedContainer = "container:Big Calc.xcodeproj">
+            BuildableName = "Max Calc.app"
+            BlueprintName = "Max Calc"
+            ReferencedContainer = "container:Max Calc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -111,5 +112,23 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;cd &quot;${PROJECT_DIR}&quot; ; agvtool bump&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "84FB22F52A8912BD001787D6"
+                     BuildableName = "Max Calc.app"
+                     BlueprintName = "Max Calc"
+                     ReferencedContainer = "container:Max Calc.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>
