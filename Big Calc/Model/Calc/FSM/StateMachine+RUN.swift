@@ -95,6 +95,9 @@ extension StateMachine {
             switch command {
             case .clear:
                 clear()
+            case .back:
+                registers.argument2 = Register(line: "0")
+                stateStack.state = .secondDigitEnter(.clearBefore)
             default:
                 break
             }
