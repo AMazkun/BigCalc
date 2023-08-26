@@ -1,4 +1,4 @@
-# BigCalc
+# Max Calc
 iPhone iPad calculator based SwiftUI
 
 Every real programmer writes two codes:
