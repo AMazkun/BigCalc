@@ -358,12 +358,18 @@ extension StateMachine {
             }
             break
         case .secondDigitEnter(let input):
-            if input == .clearBefore {registers.argument2.line = "0."}
+            // first simbol
+            if input == .clearBefore {
+                registers.argument2.line = "0."
+                stateStack.state = .secondDigitEnter(.continueInput)
+                break
+            }
+            // already has dot
+            if registers.argument2.line.contains(".") {break}
             if (registers.argument2.line.count <= maxDigits && !registers.argument2.line.contains(".")) {
                 if registers.argument2.line == "" { registers.argument2.line =  "0."}
                 else {registers.argument2.line +=  "."}
             }
-            break
         case .result:
             stateStack.state = .firstDigitEnter(.continueInput)
             registers.argument1 = Register(op:.nun, line:"0.")
@@ -377,6 +383,4 @@ extension StateMachine {
             break;
         }
     }
-    
-
 }

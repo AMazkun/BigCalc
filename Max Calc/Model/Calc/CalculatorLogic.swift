@@ -139,8 +139,12 @@ final class CalculatorLogic : ObservableObject  {
         case .result :
             return displayFormatter(stateMachine.registers.result.line) + " " + stateMachine.registers.result.op.rawValue
         default:
-            if stateMachine.registers.argument2.line == ""  {return ""}
-            if (meanState.isSecondDigitEnter) {return stateMachine.registers.argument2.line}
+            if stateMachine.registers.argument2.line == ""  {
+                return ""
+            }
+            if (meanState.isSecondDigitEnter) {
+                return stateMachine.registers.argument2.line
+            }
             return displayFormatter(stateMachine.registers.argument2.line)
         }
     }

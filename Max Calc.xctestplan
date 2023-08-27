@@ -17,19 +17,17 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:Big Calc.xcodeproj",
+        "containerPath" : "container:Max Calc.xcodeproj",
         "identifier" : "84FB23052A8912BD001787D6",
-        "name" : "Big CalcTests"
+        "name" : "Max CalcTests"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:Big Calc.xcodeproj",
+        "containerPath" : "container:Max Calc.xcodeproj",
         "identifier" : "84FB230F2A8912BD001787D6",
-        "name" : "Big CalcUITests"
+        "name" : "Max CalcUITests"
       }
     }
   ],

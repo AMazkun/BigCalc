@@ -9,8 +9,8 @@
 import Foundation
 
 enum ClearSign : String {
-    case clearBefore = "clearBefore"
-    case continueInput = "continueInput"
+    case clearBefore    = "clearBefore"
+    case continueInput  = "continueInput"
 }
 
 enum CalcRunState : Equatable {
@@ -57,7 +57,7 @@ enum CalcRunState : Equatable {
     
     var isSecondDigitEnter : Bool {
         switch self {
-        case .secondDigitMemory(_):
+        case .secondDigitEnter(_):
             return true
         default:
             return false
