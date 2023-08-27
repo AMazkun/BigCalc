@@ -27,9 +27,18 @@ struct LandscapeBody: View {
 }
 
 struct LandscapeBody_Previews: PreviewProvider {
-    @StateObject static var calculator = CalculatorLogic()
+    @StateObject static var calculator = CalculatorLogic(stateMachine: StateMachine(registers: Registers(
+        argument1: Register(op: .plus,  line: "12345.67"),
+        argument2: Register(op: .plus,    line: "345.33"),
+        result:    Register(op: .percent, line: "956.75")
+    )))
     static var previews: some View {
-        LandscapeBody().environmentObject(calculator)
-            .previewInterfaceOrientation(.landscapeRight)
+        Group {
+            LandscapeBody().environmentObject(calculator)
+                .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
+            LandscapeBody().environmentObject(calculator)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
+                .previewInterfaceOrientation(.landscapeRight)
+        }
     }
 }
