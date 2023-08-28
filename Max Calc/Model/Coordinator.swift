@@ -26,8 +26,13 @@ final class Coordinator: ObservableObject {
     @Published var orientation : UIDeviceOrientation = UIDevice.current.orientation
 
     var isPortrait : Bool {
-        [.portrait, .faceUp, .faceDown, .portraitUpsideDown, .unknown]
-            .contains(orientation)
+        if orientation == .unknown {
+            return [.portrait, .faceUp, .faceDown, .portraitUpsideDown, .unknown]
+                .contains(UIDevice.current.orientation)
+        } else {
+            return [.portrait, .faceUp, .faceDown, .portraitUpsideDown, .unknown]
+                .contains(orientation)
+        }
     }
 
     public init( router: MapRouter = .face) {
