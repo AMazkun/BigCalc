@@ -15,7 +15,7 @@ extension HorizontalAlignment {
             context[HorizontalAlignment.center]
         }
     }
-    
+
     static var twoColumnAlignment: HorizontalAlignment {
         HorizontalAlignment(TwoColumnAlignment.self)
     }
@@ -31,6 +31,27 @@ struct VariablesView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
 
+//        Grid(alignment: .leading) {
+//             Text("Memory cell: value")
+//             ForEach(calculator.getVariables) { variable in
+//                 if (variable.id > 0) && !String(variable.value).isEmpty {
+//                     GridRow {
+//                         Text( "M\(variable.id): " )
+//                             .foregroundColor(Color("memoryBackground"))
+//                         Text(variable.value)
+//                             .bold()
+//                             .foregroundColor(Color("displayForeground"))
+//                     }
+//                     .padding()
+//                     .onTapGesture {
+//                         calculator.onPaste(variable.value)
+//                         coordinator.event(.VariablesDismiss)
+//                     }
+//                 }
+//             }
+//         }
+//         .padding()
+        
         List (calculator.getVariables) { variable in
             if (variable.id > 0) && !String(variable.value).isEmpty {
                 VStack(alignment: .twoColumnAlignment) {
