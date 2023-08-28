@@ -76,7 +76,7 @@ final class CalculatorLogic : ObservableObject  {
 
     func displayFormatter(_ val : String) -> String {
         // debugPrint(val)
-        if val == "0" || val == "" {return val}
+        if val == "0" || val == "0." || val == "" || val == "-0" || val == "-" {return val}
         if let val = Double(val) {
             return displayFormatter(val) }
         else {
@@ -106,27 +106,25 @@ final class CalculatorLogic : ObservableObject  {
         case .root, .pwr, .log :
             return String ("\(registers.argument1.op.rawValue) ( \(displayFormatter(registers.argument1.line)), \(displayFormatter(registers.argument2.line)) )")
         default:
+            var line2 = displayFormatter(registers.argument2.line)
+            if let val = Double(line2.ajastInput), val < 0 {line2 = "(" + line2 + ")"}
             if registers.argument2.op == .percent {
-                return displayFormatter(registers.argument1.line) + " " + registers.argument1.op.rawValue + " " + displayFormatter(registers.argument2.line) + registers.argument2.op.rawValue
+                return displayFormatter(registers.argument1.line) + " " + registers.argument1.op.rawValue + " " + line2 + registers.argument2.op.rawValue
             } else {
-                return displayFormatter(registers.argument1.line) + " " + registers.argument1.op.rawValue + " " + displayFormatter(registers.argument2.line)
+                return displayFormatter(registers.argument1.line) + " " + registers.argument1.op.rawValue + " " + line2
             }
         }
     }
 
     func firstLine() -> String {
+        let meanState = stateMachine.stateStack.seekNonMemory()
+        if meanState.isFirstDigitEnter {
+            return stateMachine.registers.argument1.line
+        }
+        
         if Coordinator.shared.isPortrait && !(setupValues.showExpression == .Always) {
             // short view
-            let meanState = stateMachine.stateStack.seekNonMemory()
-            
-            switch meanState {
-            case .firstDigitEnter:
-                return stateMachine.registers.argument1.line
-//            case .result:
-//                return displayFormatter(stateMachine.registers.result.line) + " " + stateMachine.registers.argument1.op.rawValue
-            default:
-                return displayFormatter(stateMachine.registers.argument1.line) + " " + stateMachine.registers.argument1.op.rawValue
-            }
+            return displayFormatter(stateMachine.registers.argument1.line) + " " + stateMachine.registers.argument1.op.rawValue
         } else {
             return showCalcExpression(stateMachine.registers)
         }

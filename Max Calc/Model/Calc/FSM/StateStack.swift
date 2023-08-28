@@ -66,7 +66,7 @@ enum CalcRunState : Equatable {
     
     var isFirstDigitEnter : Bool {
         switch self {
-        case .firstDigitMemory(_):
+        case .firstDigitEnter(_):
             return true
         default:
             return false
