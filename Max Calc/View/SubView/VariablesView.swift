@@ -9,41 +9,70 @@
 import SwiftUI
 
 
+extension HorizontalAlignment {
+    enum TwoColumnAlignment: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            context[HorizontalAlignment.center]
+        }
+    }
+    
+    static var twoColumnAlignment: HorizontalAlignment {
+        HorizontalAlignment(TwoColumnAlignment.self)
+    }
+}
+
 struct VariablesView: View {
     @EnvironmentObject var calculator : CalculatorLogic
     @EnvironmentObject var coordinator: Coordinator
 
-    private var columns: [GridItem] = [
-        GridItem(.fixed(50), spacing: 16, alignment: .leading),
-        GridItem(.flexible(), alignment: .trailing)]
-    
     var body: some View {
         
         Text("Memory: ").font(.title).bold()
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
 
-        // variables list
-        List(calculator.getVariables) { variable in
+        List (calculator.getVariables) { variable in
             if (variable.id > 0) && !String(variable.value).isEmpty {
-                HStack {
-                    Text( "M\(variable.id): " )
-                        .foregroundColor(Color("memoryBackground"))
-                        .frame(maxWidth: 50, alignment: .trailing)
-                    Text(variable.value)
-                        .bold()
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .foregroundColor(Color("displayForeground"))
-                    Spacer()
-                }
-                .padding()
-                .onTapGesture {
-                    calculator.onPaste(variable.value)
-                    coordinator.event(.VariablesDismiss)
+                VStack(alignment: .twoColumnAlignment) {
+                    HStack {
+                        Text( "M\(variable.id): " )
+                            .foregroundColor(Color("memoryBackground"))
+                            .alignmentGuide(.twoColumnAlignment) { d in
+                                d[.trailing]}
+                        Text(variable.value)
+                            .bold()
+                            .foregroundColor(Color("displayForeground"))
+                    }
+                    .padding()
+                    .onTapGesture {
+                        calculator.onPaste(variable.value)
+                        coordinator.event(.VariablesDismiss)
+                    }
                 }
             }
         }
-        .listStyle(.plain)
+        
+        // variables list
+//        List(calculator.getVariables) { variable in
+//            if (variable.id > 0) && !String(variable.value).isEmpty {
+//                HStack {
+//                    Text( "M\(variable.id): " )
+//                        .foregroundColor(Color("memoryBackground"))
+//                        .frame(maxWidth: 50, alignment: .trailing)
+//                    Text(variable.value)
+//                        .bold()
+//                        .frame(maxWidth: .infinity, alignment: .trailing)
+//                        .foregroundColor(Color("displayForeground"))
+//                    Spacer()
+//                }
+//                .padding()
+//                .onTapGesture {
+//                    calculator.onPaste(variable.value)
+//                    coordinator.event(.VariablesDismiss)
+//                }
+//            }
+//        }
+//        .listStyle(.plain)
         
         // Botton menu
         HStack {
