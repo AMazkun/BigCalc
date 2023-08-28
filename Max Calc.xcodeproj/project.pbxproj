@@ -23,6 +23,7 @@
 		84B5F1C32A8D02C900320E26 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5F1C22A8D02C900320E26 /* HistoryListView.swift */; };
 		84E714192A897AEC00FD0622 /* CalcButtomLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E714182A897AEC00FD0622 /* CalcButtomLandscape.swift */; };
 		84E9E97B2A8E4B210025AD95 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9E97A2A8E4B210025AD95 /* Keyboard.swift */; };
+		84EA49CD2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA49CC2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift */; };
 		84F2C0A02A93D280006094D5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE0BF02A909F8B00911447 /* Coordinator.swift */; };
 		84F2C0A12A93D2E3006094D5 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB232C2A8912F7001787D6 /* FaceView.swift */; };
 		84F2C0A22A93D2E6006094D5 /* CalcButtomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB232A2A8912F7001787D6 /* CalcButtomView.swift */; };
@@ -86,6 +87,7 @@
 		84B5F1C22A8D02C900320E26 /* HistoryListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		84E714182A897AEC00FD0622 /* CalcButtomLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcButtomLandscape.swift; sourceTree = "<group>"; };
 		84E9E97A2A8E4B210025AD95 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		84EA49CC2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcButtomLandscapeExt.swift; sourceTree = "<group>"; };
 		84F2C0AD2A9401D9006094D5 /* Max Calc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Max Calc.xctestplan"; sourceTree = "<group>"; };
 		84FA0D062A954C65001F1A8E /* DisplaySignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySignals.swift; sourceTree = "<group>"; };
 		84FB22F62A8912BD001787D6 /* Max Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Max Calc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 			children = (
 				84FB23292A8912F7001787D6 /* LandscapeBody.swift */,
 				84E714182A897AEC00FD0622 /* CalcButtomLandscape.swift */,
+				84EA49CC2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift */,
 			);
 			path = Landscape;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				84FA0D072A954C65001F1A8E /* DisplaySignals.swift in Sources */,
 				84A628E62A8F615D00CA67FC /* Max_CalcApp.swift in Sources */,
 				84FB232E2A8912F7001787D6 /* CalcButtomView.swift in Sources */,
+				84EA49CD2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift in Sources */,
 				84FB23342A89157C001787D6 /* CalcButtomPortrait.swift in Sources */,
 				84FE0BEF2A909D1000911447 /* Router.swift in Sources */,
 				84E714192A897AEC00FD0622 /* CalcButtomLandscape.swift in Sources */,

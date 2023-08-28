@@ -131,6 +131,8 @@ extension StateMachine {
                 stateStack.push(.firstDigitMemory(memoryOp))
             case .e : registers.argument1.line = String(M_E)
             case .pi : registers.argument1.line = String( Double.pi )
+            case .gtp, .gtm:
+                break
             }
         case .secondDigitEnter:
             switch memoryOp {
@@ -140,6 +142,8 @@ extension StateMachine {
                 stateStack.push(.secondDigitMemory(memoryOp))
             case .e : registers.argument2.line = String(M_E)
             case .pi : registers.argument2.line = String(Double.pi)
+            case .gtp, .gtm:
+                break
             }
         case .result:
             switch memoryOp {
@@ -176,14 +180,15 @@ extension StateMachine {
             case .plus, .minus, .multiply, .divide, .pwr, .root, .log, .x10:
                 registers.argument2.line = "0"
                 registers.argument1.op = op
-                if let val = Double(registers.argument1.line.ajastInput) {
-                    registers.argument1.line = String(val).ajastInput
+                let ajusted = registers.argument1.line.ajastInput
+                if let _ = Double(ajusted) {
+                    registers.argument1.line = ajusted
                     stateStack.state = .secondDigitEnter(.clearBefore)
                 } else {
                     registers.argument1.line = "err arg"
                     stateStack.state = .error
                 }
-            case .under, .arctg, .cos, .rad, .deg, .sin, .tg:
+            case .under, .tgh, .cos, .rad, .deg, .sin, .tg:
                 calc1ArgFunc(op)
             default:
                 break;
@@ -206,8 +211,9 @@ extension StateMachine {
             switch op {
             // result as first argument
             case .plus, .minus, .multiply, .divide, .pwr, .root, .log, .x10:
-                if let val = Double(registers.result.line.ajastInput) {
-                    registers.argument1.line = String(Double(val)).ajastInput
+                let ajustedArg = registers.result.line.ajastInput
+                if let _ = Double(ajustedArg) {
+                    registers.argument1.line = ajustedArg
                     registers.argument2 = Register(line: "0")
                     registers.argument1.op = op
                     stateStack.state = .secondDigitEnter(.clearBefore)
@@ -223,7 +229,7 @@ extension StateMachine {
             case .percent:
                 calcPercent()
                 // repeat last one argemetf func on result
-            case .under, .arctg, .cos, .rad, .deg, .sin, .tg:
+            case .under, .tgh, .cos, .rad, .deg, .sin, .tg:
                 registers.argument1.line = registers.result.line
                 calc1ArgFunc(op)
             default: break

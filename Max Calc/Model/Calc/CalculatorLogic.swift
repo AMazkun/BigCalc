@@ -87,7 +87,8 @@ final class CalculatorLogic : ObservableObject  {
     func displayFormatter(_ val : Double) -> String {
         let formatter = NumberFormatter()
         let abs_val = abs(val)
-        let goEE = setupValues.allowEE && ((abs_val > 1_000_000_000) || (abs_val < 0.000_000_000_1))
+        // EE format only if > 1_000_000, less 0.000_000_000_1, but not 0, nil - in fixed format
+        let goEE = setupValues.allowEE && (abs_val != 0) && ((abs_val > 1_000_000_000) || (abs_val < 0.000_000_000_1))
         formatter.numberStyle = goEE ? .scientific : .decimal
         formatter.minimumFractionDigits = (setupValues.forceDP) ? setupValues.dp : 0
         formatter.usesGroupingSeparator = false
@@ -101,7 +102,7 @@ final class CalculatorLogic : ObservableObject  {
     
     func showCalcExpression(_ registers: Registers) -> String {
         switch registers.argument1.op {
-        case .under, .arctg, .cos, .rad, .sin, .tg:
+        case .under, .tgh, .cos, .rad, .sin, .tg:
             return String ("\(registers.argument1.op.rawValue) ( \(displayFormatter(registers.argument1.line)) )")
         case .root, .pwr, .log :
             return String ("\(registers.argument1.op.rawValue) ( \(displayFormatter(registers.argument1.line)), \(displayFormatter(registers.argument2.line)) )")

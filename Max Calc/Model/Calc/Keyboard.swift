@@ -35,7 +35,7 @@ var mainKeyArray: [CalcButton] =
     .digit(5),          // 19
     .digit(6),          // 20
     .op(.tg),           // 21
-    .op(.arctg),        // 22
+    .op(.tgh),          // 22
     .op(.minus),        // 23
     
     .digit(1),          // 24
@@ -51,6 +51,13 @@ var mainKeyArray: [CalcButton] =
     .op(.root),         // 33
     .op(.log),          // 34
     .op(.calc),         // 35
+    
+    .op(.cosh),         // 36
+    .op(.sinh),         // 37
+    .op(.factorial),    // 38
+    .op(.rand),         // 39
+    .memory(.gtp),      // 40
+    .memory(.gtm)       // 41
 ]
 
 class KeyArray {

@@ -16,13 +16,17 @@ enum Op: String, Equatable, Codable {
     case percent = "%"
     case sin = "sin"
     case cos = "cos"
+    case sinh = "sinh"
+    case cosh = "cosh"
     case tg = "tg"
-    case arctg = "arctg"
+    case tgh = "tgh"
     case pwr = "pwr"
     case root = "root"
     case log = "log"
     case under = "1/x"
+    case factorial = "n!"
     case rad = "rad"
+    case rand = "rnd"
     case deg = "deg"
     case x10 = "10ˣ"
     case nun = ""
@@ -43,6 +47,8 @@ enum MemoryOp: String {
     case recall = "M"
     case pi = "𝛑"
     case e = "e"
+    case gtp = "GT+"
+    case gtm = "GT-"
 }
 
 enum CalcButton {
@@ -130,7 +136,8 @@ extension CalcButton {
             return "digitBackground"
         case .op(let op):
             switch op {
-            case .arctg, .cos, .log, .sin, .tg, .pwr, .root, .under, .x10, .rad, .deg:
+            case .tgh, .cos, .log, .sin, .tg, .pwr, .sinh, .cosh, .rand, .factorial,
+                    .root, .under, .x10, .rad, .deg:
                     return "functionBackground"
             default:
                     return "operatorBackground"

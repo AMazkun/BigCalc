@@ -28,26 +28,42 @@ extension StateMachine {
         return pow(val,  1.0 / base)
     }
     
+    func factorial(_ n: Int) -> Double {
+      return (1...n).map(Double.init).reduce(1.0, *)
+    }
     
     func calc1ArgFunc(_ op : Op) {
         if let operand1 = Double(registers.argument1.line.ajastInput) {
             var result : Double
             switch op {
-            case  .arctg :
-                result = atan(operand1)
-            case  .cos:
-                result = cos(operand1)
             case  .deg:
                 result = operand1 / .pi * 180.0
             case  .rad:
                 result = operand1 * .pi / 180.0
+            case  .cos:
+                result = cos(operand1)
             case  .sin:
                 result = sin(operand1)
+            case  .cosh:
+                result = cosh(operand1)
+            case  .sinh:
+                result = sinh(operand1)
             case  .tg:
                 result = tan(operand1)
+            case  .tgh :
+                result = atan(operand1)
             case  .under:
                 result = 1.0 / operand1
-                
+            case  .rand:
+                result = Double(arc4random())
+            case  .factorial:
+                if floor(operand1) == operand1 {
+                    result = factorial(Int (operand1))
+                } else {
+                    stateStack.state = .error
+                    return
+                }
+
             default: return;
             }
             
