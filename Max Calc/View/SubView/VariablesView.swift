@@ -30,7 +30,10 @@ struct VariablesView: View {
         Text("Memory: ").font(.title).bold()
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
+        
+        // variables list
 
+//        Using Grid
 //        Grid(alignment: .leading) {
 //             Text("Memory cell: value")
 //             ForEach(calculator.getVariables) { variable in
@@ -51,7 +54,8 @@ struct VariablesView: View {
 //             }
 //         }
 //         .padding()
-        
+
+//      Using alignmentGuide
         List (calculator.getVariables) { variable in
             if (variable.id > 0) && !String(variable.value).isEmpty {
                 VStack(alignment: .twoColumnAlignment) {
@@ -73,7 +77,6 @@ struct VariablesView: View {
             }
         }
         
-        // variables list
 //        List(calculator.getVariables) { variable in
 //            if (variable.id > 0) && !String(variable.value).isEmpty {
 //                HStack {
