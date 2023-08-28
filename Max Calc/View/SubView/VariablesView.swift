@@ -13,18 +13,30 @@ struct VariablesView: View {
     @EnvironmentObject var calculator : CalculatorLogic
     @EnvironmentObject var coordinator: Coordinator
 
+    private var columns: [GridItem] = [
+        GridItem(.fixed(50), spacing: 16, alignment: .leading),
+        GridItem(.flexible(), alignment: .trailing)]
+    
     var body: some View {
         
-        Text("Variables: ").font(.title).bold()
+        Text("Memory: ").font(.title).bold()
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
 
         // variables list
         List(calculator.getVariables) { variable in
             if (variable.id > 0) && !String(variable.value).isEmpty {
                 HStack {
-                    Text( String(variable.id) + ": " )
+                    Text( "M\(variable.id): " )
+                        .foregroundColor(Color("memoryBackground"))
+                        .frame(maxWidth: 50, alignment: .trailing)
                     Text(variable.value)
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .foregroundColor(Color("displayForeground"))
+                    Spacer()
                 }
+                .padding()
                 .onTapGesture {
                     calculator.onPaste(variable.value)
                     coordinator.event(.VariablesDismiss)
