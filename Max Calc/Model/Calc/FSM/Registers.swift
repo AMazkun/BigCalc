@@ -39,7 +39,6 @@ struct Registers: Hashable, Codable {
         && (lhs.result == rhs.result)
     }
     
-//    var id = UUID() // for in list iddetificaltion
     var date = Date.now.formatted(dateStampFormat) + ":00"
     var argument1:  Register  = Register(line: "0")
     var argument2:  Register  = Register(line: "")

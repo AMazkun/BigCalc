@@ -50,8 +50,8 @@ extension StateMachine {
                 result = sinh(operand1)
             case  .tg:
                 result = tan(operand1)
-            case  .tgh :
-                result = atan(operand1)
+            case  .tanh :
+                result = tanh(operand1)
             case  .under:
                 result = 1.0 / operand1
             case  .rand:

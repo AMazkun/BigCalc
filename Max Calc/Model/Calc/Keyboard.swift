@@ -35,7 +35,7 @@ var mainKeyArray: [CalcButton] =
     .digit(5),          // 19
     .digit(6),          // 20
     .op(.tg),           // 21
-    .op(.tgh),          // 22
+    .op(.tanh),         // 22
     .op(.minus),        // 23
     
     .digit(1),          // 24

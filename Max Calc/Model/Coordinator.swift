@@ -23,21 +23,10 @@ final class Coordinator: ObservableObject {
     static let shared = Coordinator()
 
     @Published var router: MapRouter
-    @Published var orientation : UIDeviceOrientation = .unknown
-
-    var isPortrait : Bool {
-        if orientation == .unknown {
-            return [.portrait, .faceUp, .faceDown, .portraitUpsideDown, .unknown]
-                .contains(UIDevice.current.orientation)
-        } else {
-            return [.portrait, .faceUp, .faceDown, .portraitUpsideDown, .unknown]
-                .contains(orientation)
-        }
-    }
+    @Published var isPortrait : Bool = true
 
     public init( router: MapRouter = .face) {
         self.router = router
-        orientation = UIDevice.current.orientation
     }
     
     func event( _ event: CoordinatorEvent ) {

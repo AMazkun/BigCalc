@@ -9,21 +9,6 @@
 import Foundation
 import AVFoundation
 
-extension String {
-    var ajastInput: String {
-
-        let x = self.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: ",", with: ".").replacingOccurrences(of: " ", with: "")
-
-//        if let dot = x.firstIndex(of: "."), x.suffix(from: dot) == ".0" {
-//            x = String(x.prefix(upTo: dot))
-//        }
-//        if val == "0" || val == "0." || val == "" || val == "-0" || val == "-" {return val}
-
-        if x == "" || x == "-" || x == "." || x == "0E0" {return "0"}
-        return  x
-    }
-}
-
 class StateMachine {
     internal init(stateStack: StateStack = StateStack(initState: .firstDigitEnter(.clearBefore)), registers: Registers = Registers(), keyArray: [CalcButton] = mainKeyArray, memory: [String] = Array(repeating: "", count: 10), showConformation: Bool = false) {
         self.stateStack = stateStack

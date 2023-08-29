@@ -12,7 +12,16 @@ struct ContentView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var calculator : CalculatorLogic
     @Environment(\.scenePhase) var scenePhase
-
+    
+    // set device orientation
+    func setOrientation() {
+        switch UIDevice.current.orientation {
+        case .portrait, .faceUp, .faceDown, /*.portraitUpsideDown,*/ .unknown:
+            coordinator.isPortrait = true
+        default :
+            coordinator.isPortrait = false
+        }
+    }
 
     let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
         .makeConnectable()
@@ -25,13 +34,11 @@ struct ContentView: View {
                 calculator.saveHistory()
             }
         }
-        .onReceive(orientationChanged)
-        { _ in
-            let _orientation = UIDevice.current.orientation
-            if ![.faceUp, .faceDown, .portraitUpsideDown, .unknown]
-                 .contains(_orientation) {
-                coordinator.orientation = _orientation
-            }
+        .onAppear() {
+            setOrientation()
+        }
+        .onReceive(orientationChanged) { _ in
+            setOrientation()
         }
     }
 }

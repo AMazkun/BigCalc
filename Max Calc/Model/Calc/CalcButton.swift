@@ -19,7 +19,7 @@ enum Op: String, Equatable, Codable {
     case sinh = "sinh"
     case cosh = "cosh"
     case tg = "tg"
-    case tgh = "tgh"
+    case tanh = "tanh"
     case pwr = "pwr"
     case root = "root"
     case log = "log"
@@ -136,7 +136,7 @@ extension CalcButton {
             return "digitBackground"
         case .op(let op):
             switch op {
-            case .tgh, .cos, .log, .sin, .tg, .pwr, .sinh, .cosh, .rand, .factorial,
+            case .tanh, .cos, .log, .sin, .tg, .pwr, .sinh, .cosh, .rand, .factorial,
                     .root, .under, .x10, .rad, .deg:
                     return "functionBackground"
             default:

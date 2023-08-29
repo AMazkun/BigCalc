@@ -102,7 +102,7 @@ final class CalculatorLogic : ObservableObject  {
     
     func showCalcExpression(_ registers: Registers) -> String {
         switch registers.argument1.op {
-        case .under, .tgh, .cos, .rad, .sin, .tg:
+        case .under, .tanh, .cos, .rad, .sin, .tg:
             return String ("\(registers.argument1.op.rawValue) ( \(displayFormatter(registers.argument1.line)) )")
         case .root, .pwr, .log :
             return String ("\(registers.argument1.op.rawValue) ( \(displayFormatter(registers.argument1.line)), \(displayFormatter(registers.argument2.line)) )")

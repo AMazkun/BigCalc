@@ -23,6 +23,7 @@
 		847A85A02A9DD78800934959 /* VarViewGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A859F2A9DD78800934959 /* VarViewGrid.swift */; };
 		84A628E62A8F615D00CA67FC /* Max_CalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A628E52A8F615D00CA67FC /* Max_CalcApp.swift */; };
 		84B5F1C32A8D02C900320E26 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5F1C22A8D02C900320E26 /* HistoryListView.swift */; };
+		84C529AF2A9E7A0A00249BAD /* etc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C529AE2A9E7A0A00249BAD /* etc.swift */; };
 		84E714192A897AEC00FD0622 /* CalcButtomLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E714182A897AEC00FD0622 /* CalcButtomLandscape.swift */; };
 		84E9E97B2A8E4B210025AD95 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9E97A2A8E4B210025AD95 /* Keyboard.swift */; };
 		84EA49CD2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA49CC2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift */; };
@@ -89,6 +90,7 @@
 		84A628E22A8F5F8400CA67FC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		84A628E52A8F615D00CA67FC /* Max_CalcApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Max_CalcApp.swift; sourceTree = "<group>"; };
 		84B5F1C22A8D02C900320E26 /* HistoryListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
+		84C529AE2A9E7A0A00249BAD /* etc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etc.swift; sourceTree = "<group>"; };
 		84E714182A897AEC00FD0622 /* CalcButtomLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcButtomLandscape.swift; sourceTree = "<group>"; };
 		84E9E97A2A8E4B210025AD95 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		84EA49CC2A9CB4B4002F8E85 /* CalcButtomLandscapeExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcButtomLandscapeExt.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				84A628E52A8F615D00CA67FC /* Max_CalcApp.swift */,
+				84C529AE2A9E7A0A00249BAD /* etc.swift */,
 				84FB23282A8912F7001787D6 /* View */,
 				84FB23232A8912DC001787D6 /* Model */,
 				84FB22FD2A8912BD001787D6 /* Assets.xcassets */,
@@ -451,6 +454,7 @@
 				84FE0BF72A90B79900911447 /* SetupView.swift in Sources */,
 				84FE0BF52A90A92900911447 /* ContentView.swift in Sources */,
 				842730432A95E9D600F8ADA3 /* StateMachine.swift in Sources */,
+				84C529AF2A9E7A0A00249BAD /* etc.swift in Sources */,
 				84FB23272A8912DC001787D6 /* CalculatorLogic.swift in Sources */,
 				84FA0D072A954C65001F1A8E /* DisplaySignals.swift in Sources */,
 				84A628E62A8F615D00CA67FC /* Max_CalcApp.swift in Sources */,
@@ -647,8 +651,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -679,8 +682,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

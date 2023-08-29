@@ -188,7 +188,7 @@ extension StateMachine {
                     registers.argument1.line = "err arg"
                     stateStack.state = .error
                 }
-            case .under, .tgh, .cos, .rad, .deg, .sin, .tg:
+            case .under, .tanh, .cos, .rad, .deg, .sin, .tg:
                 calc1ArgFunc(op)
             default:
                 break;
@@ -229,7 +229,7 @@ extension StateMachine {
             case .percent:
                 calcPercent()
                 // repeat last one argemetf func on result
-            case .under, .tgh, .cos, .rad, .deg, .sin, .tg:
+            case .under, .tanh, .cos, .rad, .deg, .sin, .tg:
                 registers.argument1.line = registers.result.line
                 calc1ArgFunc(op)
             default: break
