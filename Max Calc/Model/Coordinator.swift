@@ -23,7 +23,7 @@ final class Coordinator: ObservableObject {
     static let shared = Coordinator()
 
     @Published var router: MapRouter
-    @Published var orientation : UIDeviceOrientation = UIDevice.current.orientation
+    @Published var orientation : UIDeviceOrientation = .unknown
 
     var isPortrait : Bool {
         if orientation == .unknown {
@@ -37,6 +37,7 @@ final class Coordinator: ObservableObject {
 
     public init( router: MapRouter = .face) {
         self.router = router
+        orientation = UIDevice.current.orientation
     }
     
     func event( _ event: CoordinatorEvent ) {
