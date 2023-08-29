@@ -45,7 +45,9 @@ public enum MapRouter: NavigationRouter {
         case .history:
             HistoryListView().transition(self.transition)
         case .variables:
-            VariablesView().transition(self.transition)
+//            VarViewAlGide().transition(self.transition)
+            VarViewClassic().transition(self.transition)
+//            VarViewGrid().transition(self.transition)
         case .setup:
             SetupView().transition(self.transition)
         }

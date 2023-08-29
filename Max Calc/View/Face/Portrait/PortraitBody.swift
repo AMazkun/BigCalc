@@ -20,7 +20,7 @@ struct PortraitBody: View {
             
             VStack(alignment: .trailing, spacing: 5.0){
                 DisplayArea()
-                    .frame(maxWidth: .infinity, maxHeight: displayHeight, alignment: .leading) //<-- Here
+                    .frame(maxWidth: .infinity, maxHeight: displayHeight, alignment: .leading)
 
                 CalcButtomPortrait()
             }
