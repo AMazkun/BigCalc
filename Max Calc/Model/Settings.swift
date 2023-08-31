@@ -24,7 +24,7 @@ enum ShowExpression: String, CaseIterable, Identifiable, Codable {
 struct SetupValues : Codable {
     internal init(appearence: Appearence = .Automatic, showExpression: ShowExpression = .Automatic, dp: Int = 4, dpEE: Int = 8, allowEE: Bool = true, forceDP: Bool = false, history: Int = historyStep * 2) {
         do {
-            if let data = UserDefaults.standard.data(forKey: "BigCalcSetup") {
+            if let data = UserDefaults.standard.data(forKey: "MaxCalcSetup") {
                 let saved = try JSONDecoder().decode(SetupValues.self, from: data)
                 self.appearence = saved.appearence
                 self.showExpression = saved.showExpression
@@ -56,6 +56,6 @@ struct SetupValues : Codable {
     
     func save() {
         let data = try! JSONEncoder().encode(self)
-        UserDefaults.standard.set(data, forKey: "BigCalcSetup")
+        UserDefaults.standard.set(data, forKey: "MaxCalcSetup")
     }
 }

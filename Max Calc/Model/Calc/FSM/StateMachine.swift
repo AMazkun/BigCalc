@@ -14,8 +14,18 @@ class StateMachine {
         self.stateStack = stateStack
         self.registers = registers
         self.keyArray = keyArray
-        self.memory = memory
         self.showConformation = showConformation
+        self.memory = memory
+
+        do {
+            if let data = UserDefaults.standard.data(forKey: "MaxCalcMemory") {
+                let saved = try JSONDecoder().decode( [String].self, from: data)
+                self.memory = saved
+            }
+        } catch {
+            self.memory = memory
+        }
+
     }
     
     
@@ -42,6 +52,11 @@ class StateMachine {
             default: break
             }
         }
+    }
+    
+    func saveMemory(){
+        let data = try! JSONEncoder().encode(memory)
+        UserDefaults.standard.set(data, forKey: "MaxCalcMemory")
     }
     
     

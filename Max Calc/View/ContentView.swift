@@ -31,7 +31,7 @@ struct ContentView: View {
         coordinator.router.view()
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .background {
-                calculator.saveHistory()
+                calculator.saveWork()
             }
         }
         .onAppear() {
